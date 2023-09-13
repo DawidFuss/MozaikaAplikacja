@@ -8,6 +8,7 @@ namespace Mozaika_GUI
     {
         public Image Obraz;
         public static List <Image> listaObrazkow = new List<Image> ();
+        int aaa = 5;
         public Miniaturki(string sciezka, int szerokosc, int wysokosc)
 
         {
