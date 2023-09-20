@@ -32,6 +32,13 @@ namespace Mozaika_GUI
 
         }
 
+        public int Odleglosc(Color kolor)
+        {
+            int odlegloscRed = Math.Abs(sredniKolor.R - kolor.R);
+            int odlegloscGreen = Math.Abs(sredniKolor.G - kolor.G);
+            int odlegloscBlue = Math.Abs(sredniKolor.B - kolor.B);
+            return Math.Max(Math.Max(odlegloscRed, odlegloscGreen), odlegloscBlue);
+        }
         private Color ObliczSredniKolorr()
         {
             if (obraz == null)
