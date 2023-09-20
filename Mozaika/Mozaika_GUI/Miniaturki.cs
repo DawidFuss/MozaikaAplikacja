@@ -54,11 +54,11 @@ namespace Mozaika_GUI
                 }
 
             }
-
+            
             int iloscPikseli = obraz.Width * obraz.Height;
             int sredniRed = (int) ((double) sumaRed / iloscPikseli + 0.5);
-            int sredniGreen = (int) (double)sumaGreen / iloscPikseli;
-            int sredniBluee = sumaBlue / iloscPikseli;
+            int sredniGreen = (int) ((double)sumaGreen / iloscPikseli + 0.5);
+            int sredniBluee = (int)((double)sumaBlue / iloscPikseli + 0.5);
             return Color.FromArgb(sredniRed, sredniGreen, sumaBlue);
         }
     }
