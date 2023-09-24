@@ -11,17 +11,38 @@ namespace Mozaika_GUI
 {
     internal class ListaMiniaturek
     {
-        private List<Miniaturki> Lista_Miniaturek;
+        private List<Miniaturka> listaMiniaturek;
         public ListaMiniaturek() { 
-            Lista_Miniaturek = new List<Miniaturki>();
-       
+            listaMiniaturek = new List<Miniaturka>();     
         }
-        
-        void WczytajMiniaturke (string sciezka) {
+
+        public void Wczytaj(string sciezka)
+        {
             try
             {
                 DirectoryInfo folder = new DirectoryInfo(sciezka);
-                if (folder.Exists && (folder.GetFiles("*.jpg", SearchOption.TopDirectoryOnly).Length > 0 || folder.GetFiles("*.png", SearchOption.TopDirectoryOnly).Length > 0))
+                if (!folder.Exists)
+                {
+                    return;
+                }
+
+                string[] rozszezenia = new string[] { "*.jpg", "*.png", "*.bmp" };
+
+                foreach (string rozszezenie in rozszezenia)
+                {
+                    var images = folder.GetFiles(rozszezenie, SearchOption.AllDirectories);
+                    foreach (var image in images)
+                    {
+                        listaMiniaturek.Add(new Miniaturka(image.FullName, 80, 60));
+                    }
+                }
+
+
+
+
+                /*
+                if (folder.Exists && (folder.GetFiles("*.jpg", SearchOption.AllDirectories).Length > 0
+                    || folder.GetFiles("*.png", SearchOption.AllDirectories).Length > 0))
                 {
 
                     List<FileInfo> listaPlikow = new List<FileInfo>();
@@ -36,27 +57,27 @@ namespace Mozaika_GUI
                     var fold = folder.GetDirectories();
                     foreach (DirectoryInfo d in fold)
                     {
-                        WczytajMiniaturke(d.FullName);
+                        Wczytaj(d.FullName);
                     }
                 }
                 else
                 {
                     Console.WriteLine("Folder nie istnieje lub nie zawiera plików");
-                }
+                }*/
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 Console.WriteLine($"Wystąpił błąd: {ex.Message}");
             }
 
         }
 
-        public Miniaturki WybierzMiniaturke(Color kolor)
+        public Miniaturka WybierzMiniaturke(Color kolor)
         {
-            Miniaturki wybranaMiniaturka = null;
+            Miniaturka wybranaMiniaturka = null;
             int najmniejszaOdleglosc = int.MaxValue;
 
-            foreach (Miniaturki miniatura in Lista_Miniaturek)
+            foreach (Miniaturka miniatura in listaMiniaturek)
             {
                 int odleglosc = miniatura.Odleglosc(kolor);
                 if (odleglosc < najmniejszaOdleglosc)
@@ -68,10 +89,6 @@ namespace Mozaika_GUI
 
             return wybranaMiniaturka;
         }
-
-
-
-
 
 
     }
