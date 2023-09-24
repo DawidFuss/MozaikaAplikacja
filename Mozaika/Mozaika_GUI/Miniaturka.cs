@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Mozaika_GUI
 {
-    class Miniaturki
+    class Miniaturka
     {
         private Bitmap obraz;
         private Color color;
@@ -12,7 +12,7 @@ namespace Mozaika_GUI
         public Bitmap Obraz { get { return obraz; } }
         public Color Color { get { return color; } }
 
-        public Miniaturki(string sciezka, int szerokosc, int wysokosc)
+        public Miniaturka(string sciezka, int szerokosc, int wysokosc)
         {
             try
             {
