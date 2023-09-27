@@ -10,29 +10,42 @@ namespace Mozaika_GUI
     internal class Skrypt
     {
 
-        public void ChangeExtension(string extension)
+        public static void ChangeExtension(string extension)
         {
             DirectoryInfo f = new DirectoryInfo(extension);
-            if (f.Exists)
+
+            if (!f.Exists)
             {
+                return;
+            }
 
-                 
-                var jpgFiles = f.GetFiles("*.jpg.", SearchOption.AllDirectories);
-                foreach (var files in jpgFiles)
-                {
+            var jpgFiles = f.GetFiles();
+/*
+            string test1 = jpgFiles.Length+" cos "+ f.Name;
+            string test2 = string.Format("{0} cos {2}!",jpgFiles.Length,f.Name);
+            string test3 = $"{jpgFiles.Length} cos {f.Name}!";
+            string test4 = "enter: \n, tabulator: \t ukosnik \\";
+            string test5 = @"F:\Korepetycje\Baza\Baza\Baza\bin\Release";
+*/
+            Directory.CreateDirectory(extension + @"/gotowe");
 
-                    if (Path.GetExtension(files.Name) != "*.jpg")
-                    {
-
-                        string newFileName = Path.ChangeExtension(files.FullName, "*.jpg");
-                        File.Move(files.FullName, newFileName);
-
-                    }
-
-                }
-
+            foreach (var file in jpgFiles)
+            {
+                string destination = extension + @"\gotowe\" + file.Name;
+                destination = destination.Replace(".jpg", ".png");
+                File.Copy(file.FullName, destination);
             }
             
+                //Path.GetExtension(file.Name) != "*.jpg")
+                
+                    //ng newFileName = Path.ChangeExtension(files.FullName, "*.jpg");
+                    
+                
+
+                
+            
+
+
 
         }
 
