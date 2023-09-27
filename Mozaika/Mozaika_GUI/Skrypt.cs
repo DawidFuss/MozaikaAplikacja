@@ -32,11 +32,7 @@ namespace Mozaika_GUI
                 }
 
             }
-            else
-            {
-                return;
-            }
-
+            
 
         }
 
