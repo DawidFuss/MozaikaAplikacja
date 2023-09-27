@@ -17,14 +17,14 @@ namespace Mozaika_GUI
             {
 
                  
-                var jpgFiles = f.GetFiles("*jpg.", SearchOption.AllDirectories);
+                var jpgFiles = f.GetFiles("*.jpg.", SearchOption.AllDirectories);
                 foreach (var files in jpgFiles)
                 {
 
-                    if (Path.GetExtension(files.Name) != ".jpg")
+                    if (Path.GetExtension(files.Name) != "*.jpg")
                     {
 
-                        string newFileName = Path.ChangeExtension(files.FullName, ".jpg");
+                        string newFileName = Path.ChangeExtension(files.FullName, "*.jpg");
                         File.Move(files.FullName, newFileName);
 
                     }
