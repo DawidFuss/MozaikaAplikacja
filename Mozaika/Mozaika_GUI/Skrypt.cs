@@ -16,7 +16,7 @@ namespace Mozaika_GUI
             if (f.Exists)
             {
 
-                string targetFolder = "";
+                 
                 var jpgFiles = f.GetFiles("*jpg.", SearchOption.AllDirectories);
                 foreach (var files in jpgFiles)
                 {
