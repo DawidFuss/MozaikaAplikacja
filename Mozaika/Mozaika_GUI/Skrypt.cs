@@ -25,13 +25,11 @@ namespace Mozaika_GUI
                     {
 
                         string newFileName = Path.ChangeExtension(files.FullName, ".jpg");
-                        files.MoveTo(targetFolder);
+                        File.Move(files.FullName, newFileName);
 
                     }
 
                 }
-
-
 
             }
             else
