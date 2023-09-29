@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mozaika_Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,6 +31,7 @@ namespace Mozaika_GUI
             miniaturki.Wczytaj(@"C:\Users\dawid\OneDrive\Desktop\zdjecia");
             Obraz obraz = new Obraz(@"C:\Users\dawid\OneDrive\Desktop\Mozaiki\images(8).jpg", miniaturki);
             obraz.ZrobMozaike();
+            Class1 x = new Class1();
 
         }
     }

@@ -84,5 +84,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mozaika_Logic\Mozaika_Logic.csproj">
+      <Project>{0af9c04b-6a1e-4603-b6e7-d7216d96b605}</Project>
+      <Name>Mozaika_Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

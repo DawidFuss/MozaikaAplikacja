@@ -37,15 +37,8 @@ namespace Mozaika_GUI
             }
             
                 //Path.GetExtension(file.Name) != "*.jpg")
-                
-                    //ng newFileName = Path.ChangeExtension(files.FullName, "*.jpg");
-                    
-                
-
-                
+                //ng newFileName = Path.ChangeExtension(files.FullName, "*.jpg");
             
-
-
 
         }
 
