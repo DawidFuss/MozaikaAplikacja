@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mozaika_GUI
 {
-    internal class Skrypt
+    public class Skrypt
     {
 
         public static void ChangeExtension(string extension)
