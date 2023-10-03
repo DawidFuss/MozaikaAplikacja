@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Mozaika_GUI
 {
-     class Program
+     public class Program
     {
         /// <summary>
         /// Główny punkt wejścia dla aplikacji.

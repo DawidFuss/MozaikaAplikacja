@@ -1,0 +1,2 @@
+C:\Users\dawid\OneDrive\Documents\GitHub\MozaikaAplikacja\MozaikaAplikacja\Mozaika\Mozaika_Logic\obj\Debug\Mozaika_Logic.csproj.AssemblyReference.cache
+C:\Users\dawid\OneDrive\Documents\GitHub\MozaikaAplikacja\MozaikaAplikacja\Mozaika\Mozaika_Logic\obj\Debug\Mozaika_Logic.csproj.CoreCompileInputs.cache

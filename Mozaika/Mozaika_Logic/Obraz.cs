@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mozaika_GUI
 {
-    internal class Obraz
+    public class Obraz
     {
         private Bitmap obraz;
         ListaMiniaturek miniaturki;

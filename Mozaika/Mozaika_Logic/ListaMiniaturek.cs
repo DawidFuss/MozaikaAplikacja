@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Mozaika_GUI
    
 {
-    internal class ListaMiniaturek
+    public class ListaMiniaturek
     {
         private List<Miniaturka> listaMiniaturek;
         public ListaMiniaturek() { 

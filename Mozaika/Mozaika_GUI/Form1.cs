@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Mozaika_GUI
@@ -32,6 +29,25 @@ namespace Mozaika_GUI
             Obraz obraz = new Obraz(@"C:\Users\dawid\OneDrive\Desktop\Mozaiki\images(8).jpg", miniaturki);
             obraz.ZrobMozaike();
             Class1 x = new Class1();
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text files (*.txt) | *.txt | All.files (*.*)|*.*";
+            openFileDialog.Title = "Wybierz plik";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedPath = openFileDialog.FileName;
+            }
 
         }
     }
