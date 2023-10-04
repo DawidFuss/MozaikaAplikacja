@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mozaika_GUI
 {
-    internal class FragmentObrazu
+    public class FragmentObrazu
     {
         private Bitmap obraz;
         private int szerokosc;

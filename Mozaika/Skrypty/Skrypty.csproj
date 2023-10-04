@@ -44,5 +44,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skrypt.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mozaika_GUI\Mozaika_GUI.csproj">
+      <Project>{d7ac4bad-9e5a-45db-8e83-20487516b1cb}</Project>
+      <Name>Mozaika_GUI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
