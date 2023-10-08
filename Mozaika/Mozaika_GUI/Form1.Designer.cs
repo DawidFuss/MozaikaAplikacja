@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Mozaika = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox_Miniatures = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.ListView1 = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Lista = new System.Windows.Forms.ListView();
+            this.CreateMosaic = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.Resolution = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.Effect = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.MiniatureSize = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.MosaicSize = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxImageName = new System.Windows.Forms.TextBox();
             this.Wybierz = new System.Windows.Forms.Button();
@@ -50,9 +51,10 @@
             this.Historia = new System.Windows.Forms.TabPage();
             this.Miniaturki = new System.Windows.Forms.TabPage();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.TimeProgessBar = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.Mozaika.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBox_Miniatures.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -69,16 +71,16 @@
             // Mozaika
             // 
             this.Mozaika.BackColor = System.Drawing.Color.Transparent;
-            this.Mozaika.Controls.Add(this.groupBox1);
-            this.Mozaika.Controls.Add(this.button1);
+            this.Mozaika.Controls.Add(this.groupBox_Miniatures);
+            this.Mozaika.Controls.Add(this.CreateMosaic);
             this.Mozaika.Controls.Add(this.progressBar1);
-            this.Mozaika.Controls.Add(this.comboBox4);
+            this.Mozaika.Controls.Add(this.Resolution);
             this.Mozaika.Controls.Add(this.label5);
-            this.Mozaika.Controls.Add(this.comboBox3);
+            this.Mozaika.Controls.Add(this.Effect);
             this.Mozaika.Controls.Add(this.label4);
-            this.Mozaika.Controls.Add(this.comboBox2);
+            this.Mozaika.Controls.Add(this.MiniatureSize);
             this.Mozaika.Controls.Add(this.label3);
-            this.Mozaika.Controls.Add(this.comboBox1);
+            this.Mozaika.Controls.Add(this.MosaicSize);
             this.Mozaika.Controls.Add(this.label2);
             this.Mozaika.Controls.Add(this.textBoxImageName);
             this.Mozaika.Controls.Add(this.Wybierz);
@@ -90,17 +92,17 @@
             this.Mozaika.TabIndex = 0;
             this.Mozaika.Text = "Mozaika";
             // 
-            // groupBox1
+            // groupBox_Miniatures
             // 
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.ListView1);
-            this.groupBox1.Location = new System.Drawing.Point(92, 254);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(519, 143);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Miniatury";
+            this.groupBox_Miniatures.Controls.Add(this.button3);
+            this.groupBox_Miniatures.Controls.Add(this.button2);
+            this.groupBox_Miniatures.Controls.Add(this.Lista);
+            this.groupBox_Miniatures.Location = new System.Drawing.Point(92, 254);
+            this.groupBox_Miniatures.Name = "groupBox_Miniatures";
+            this.groupBox_Miniatures.Size = new System.Drawing.Size(519, 143);
+            this.groupBox_Miniatures.TabIndex = 13;
+            this.groupBox_Miniatures.TabStop = false;
+            this.groupBox_Miniatures.Text = "Miniatury";
             // 
             // button3
             // 
@@ -120,29 +122,29 @@
             this.button2.Text = "Dodaj";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // ListView1
+            // Lista
             // 
-            this.ListView1.BackgroundImageTiled = true;
-            this.ListView1.FullRowSelect = true;
-            this.ListView1.GridLines = true;
-            this.ListView1.HideSelection = false;
-            this.ListView1.Location = new System.Drawing.Point(38, 24);
-            this.ListView1.Name = "ListView1";
-            this.ListView1.Size = new System.Drawing.Size(456, 84);
-            this.ListView1.TabIndex = 10;
-            this.ListView1.UseCompatibleStateImageBehavior = false;
-            this.ListView1.View = System.Windows.Forms.View.List;
-            this.ListView1.VirtualMode = true;
+            this.Lista.BackgroundImageTiled = true;
+            this.Lista.FullRowSelect = true;
+            this.Lista.GridLines = true;
+            this.Lista.HideSelection = false;
+            this.Lista.Location = new System.Drawing.Point(38, 24);
+            this.Lista.Name = "Lista";
+            this.Lista.Size = new System.Drawing.Size(456, 84);
+            this.Lista.TabIndex = 10;
+            this.Lista.UseCompatibleStateImageBehavior = false;
+            this.Lista.View = System.Windows.Forms.View.List;
+            this.Lista.VirtualMode = true;
             // 
-            // button1
+            // CreateMosaic
             // 
-            this.button1.Location = new System.Drawing.Point(92, 403);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 29);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Stwórz";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            this.CreateMosaic.Location = new System.Drawing.Point(92, 403);
+            this.CreateMosaic.Name = "CreateMosaic";
+            this.CreateMosaic.Size = new System.Drawing.Size(75, 29);
+            this.CreateMosaic.TabIndex = 12;
+            this.CreateMosaic.Text = "Stwórz";
+            this.CreateMosaic.UseVisualStyleBackColor = true;
+            this.CreateMosaic.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // progressBar1
             // 
@@ -151,14 +153,14 @@
             this.progressBar1.Size = new System.Drawing.Size(403, 28);
             this.progressBar1.TabIndex = 11;
             // 
-            // comboBox4
+            // Resolution
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(222, 221);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(354, 21);
-            this.comboBox4.TabIndex = 9;
+            this.Resolution.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Resolution.FormattingEnabled = true;
+            this.Resolution.Location = new System.Drawing.Point(222, 221);
+            this.Resolution.Name = "Resolution";
+            this.Resolution.Size = new System.Drawing.Size(354, 21);
+            this.Resolution.TabIndex = 9;
             // 
             // label5
             // 
@@ -169,14 +171,14 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Rozdzielczość:";
             // 
-            // comboBox3
+            // Effect
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(222, 179);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(354, 21);
-            this.comboBox3.TabIndex = 7;
+            this.Effect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Effect.FormattingEnabled = true;
+            this.Effect.Location = new System.Drawing.Point(222, 179);
+            this.Effect.Name = "Effect";
+            this.Effect.Size = new System.Drawing.Size(354, 21);
+            this.Effect.TabIndex = 7;
             // 
             // label4
             // 
@@ -187,14 +189,14 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Efekt:";
             // 
-            // comboBox2
+            // MiniatureSize
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(222, 139);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(354, 21);
-            this.comboBox2.TabIndex = 5;
+            this.MiniatureSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MiniatureSize.FormattingEnabled = true;
+            this.MiniatureSize.Location = new System.Drawing.Point(222, 139);
+            this.MiniatureSize.Name = "MiniatureSize";
+            this.MiniatureSize.Size = new System.Drawing.Size(354, 21);
+            this.MiniatureSize.TabIndex = 5;
             // 
             // label3
             // 
@@ -205,16 +207,16 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Rozmiar miniatury:";
             // 
-            // comboBox1
+            // MosaicSize
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.MenuText;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.Menu;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(222, 96);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(354, 21);
-            this.comboBox1.TabIndex = 3;
+            this.MosaicSize.BackColor = System.Drawing.SystemColors.Menu;
+            this.MosaicSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MosaicSize.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.MosaicSize.FormattingEnabled = true;
+            this.MosaicSize.Location = new System.Drawing.Point(222, 96);
+            this.MosaicSize.Name = "MosaicSize";
+            this.MosaicSize.Size = new System.Drawing.Size(354, 21);
+            this.MosaicSize.TabIndex = 3;
             // 
             // label2
             // 
@@ -277,6 +279,11 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // TimeProgessBar
+            // 
+            this.TimeProgessBar.Interval = 50;
+            this.TimeProgessBar.Tick += new System.EventHandler(this.TimeProgessBar_Tick_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,7 +296,7 @@
             this.tabControl1.ResumeLayout(false);
             this.Mozaika.ResumeLayout(false);
             this.Mozaika.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
+            this.groupBox_Miniatures.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -305,19 +312,20 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox textBoxImageName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox MosaicSize;
+        private System.Windows.Forms.ComboBox Resolution;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox Effect;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox MiniatureSize;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListView ListView1;
+        private System.Windows.Forms.ListView Lista;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox_Miniatures;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button CreateMosaic;
+        private System.Windows.Forms.Timer TimeProgessBar;
     }
 }
 
