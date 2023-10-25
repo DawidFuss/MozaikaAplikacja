@@ -49,12 +49,12 @@ namespace Mozaika_GUI
             this.MosaicSize = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxImageName = new System.Windows.Forms.TextBox();
-            this.Wybierz = new System.Windows.Forms.Button();
+            this.SelectButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.Historia = new System.Windows.Forms.TabPage();
             this.Miniaturki = new System.Windows.Forms.TabPage();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.TimeProgessBar = new System.Windows.Forms.Timer(this.components);
+            this.Timer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.Mozaika.SuspendLayout();
             this.groupBox_Miniatures.SuspendLayout();
@@ -86,7 +86,7 @@ namespace Mozaika_GUI
             this.Mozaika.Controls.Add(this.MosaicSize);
             this.Mozaika.Controls.Add(this.label2);
             this.Mozaika.Controls.Add(this.textBoxImageName);
-            this.Mozaika.Controls.Add(this.Wybierz);
+            this.Mozaika.Controls.Add(this.SelectButton);
             this.Mozaika.Controls.Add(this.label1);
             this.Mozaika.Location = new System.Drawing.Point(4, 22);
             this.Mozaika.Name = "Mozaika";
@@ -147,7 +147,7 @@ namespace Mozaika_GUI
             this.CreateMosaic.TabIndex = 12;
             this.CreateMosaic.Text = "Stwórz";
             this.CreateMosaic.UseVisualStyleBackColor = true;
-           //this.CreateMosaic.Click += new System.EventHandler(this.button1_Click_2);
+            this.CreateMosaic.Click += new System.EventHandler(this.CreateMosaic_Click);
             // 
             // progressBar1
             // 
@@ -155,7 +155,6 @@ namespace Mozaika_GUI
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(438, 28);
             this.progressBar1.TabIndex = 11;
-           //this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // Resolution
             // 
@@ -240,14 +239,15 @@ namespace Mozaika_GUI
             this.textBoxImageName.Size = new System.Drawing.Size(595, 45);
             this.textBoxImageName.TabIndex = 2;
             // 
-            // Wybierz
+            // SelectButton
             // 
-            this.Wybierz.Location = new System.Drawing.Point(92, 16);
-            this.Wybierz.Name = "Wybierz";
-            this.Wybierz.Size = new System.Drawing.Size(113, 45);
-            this.Wybierz.TabIndex = 1;
-            this.Wybierz.Text = "Wybierz";
-            this.Wybierz.UseVisualStyleBackColor = true;
+            this.SelectButton.Location = new System.Drawing.Point(92, 16);
+            this.SelectButton.Name = "SelectButton";
+            this.SelectButton.Size = new System.Drawing.Size(113, 45);
+            this.SelectButton.TabIndex = 1;
+            this.SelectButton.Text = "Wybierz";
+            this.SelectButton.UseVisualStyleBackColor = true;
+            this.SelectButton.Click += new System.EventHandler(this.SelectButton_Click);
             // 
             // label1
             // 
@@ -282,10 +282,10 @@ namespace Mozaika_GUI
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // TimeProgessBar
+            // Timer
             // 
-            this.TimeProgessBar.Interval = 50;
-            //this.TimeProgessBar.Tick += new System.EventHandler(this.TimeProgessBar_Tick_1);
+            this.Timer.Interval = 50;
+            this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // Form1
             // 
@@ -296,7 +296,6 @@ namespace Mozaika_GUI
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = " ";
-          //  this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.Mozaika.ResumeLayout(false);
             this.Mozaika.PerformLayout();
@@ -312,7 +311,7 @@ namespace Mozaika_GUI
         private System.Windows.Forms.TabPage Historia;
         private System.Windows.Forms.TabPage Miniaturki;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Wybierz;
+        private System.Windows.Forms.Button SelectButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox textBoxImageName;
         private System.Windows.Forms.Label label2;
@@ -329,7 +328,7 @@ namespace Mozaika_GUI
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button CreateMosaic;
-        private System.Windows.Forms.Timer TimeProgessBar;
+        private System.Windows.Forms.Timer Timer;
     }
 }
 

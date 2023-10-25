@@ -14,13 +14,9 @@ namespace Mozaika_GUI
 {
     public partial class Form1 : Form, IView
     {
-        public event EventHandler CreateMosaicClick;
-
-
-        public event EventHandler ButtonClickEvent;
-        public event EventHandler ButtonClickEvent2;
-        public event EventHandler ProgressBarEvent;
-
+        private event EventHandler createMosaicClick;
+        private event EventHandler selectButtonClick;
+        private event EventHandler timerTick;
 
         private ListaMiniaturek miniaturki;
         private MosaicService mosaicService;
@@ -30,7 +26,6 @@ namespace Mozaika_GUI
            
             InitializeComponent();
             MyController myController = new MyController(this, CreateMosaic, progressBar1);
-            myController.ProgressBarValueChanged += MyController_ProgressBarValueChanged;
             mosaicService =  MosaicService.Instance;
             Lista.View = View.Details;
             Lista.Columns.Add("Nazwa zbioru", 100);
@@ -41,92 +36,87 @@ namespace Mozaika_GUI
             "A3: 297mm x 420mm","A4: 210mm x 297mm"};
             MosaicSize.Items.AddRange(elementy_Rozmiar_Mozaiki);
            // mosaicService.MosaicFinished += OnMosaicFinished;
-            TimeProgessBar.Start();
-            Wybierz.Click += (sender, e) => 
-            { 
-                ButtonClickEvent?.Invoke(sender, e); 
-            };
-
-            CreateMosaic.Click += (sender, e) =>
-            {
-                Button2ClickEvent?.Invoke(sender, e);
-            };
-
-            progressBar1.Click += (sender, e) => 
-            { 
-  
-                TimeProgresBarEvent?.Invoke(sender, e);      
-            };
-
+            Timer.Start();
+          
 
         }
 
-        public EventHandler Button1ClickEvent
+        public EventHandler CreateMosaicClick
         {
             get
             {
-                return ButtonClickEvent;
+                return createMosaicClick;
             }
             set
             {
-                ButtonClickEvent = value;
+                createMosaicClick = value;
             }
         }
 
-        public EventHandler Button2ClickEvent 
+        public EventHandler SelectButtonClick
         {
             get
             {
-                return ButtonClickEvent2;
+                return selectButtonClick;
             }
             set
             {
-                ButtonClickEvent2 = value;
+                selectButtonClick = value;
             }
 
         }
 
-        public EventHandler TimeProgresBarEvent
+        public EventHandler TimerTick
         {
             get
-            { 
-              return ProgressBarEvent; 
+            {
+                return timerTick;
             }
-
             set
             {
-              ProgressBarEvent = value;
+                timerTick = value;
             }
 
         }
 
-        private void MyController_ProgressBarValueChanged(object sender, int value)
+        public int ProgressBarValue
         {
-            progressBar1.Value = value;
+           
+            set
+            {
+                progressBar1.Value = value;
+            }
+
         }
 
-
-
-        private void przycisk_Click(object sender, EventArgs e)
-        {
-            this.BackColor = Color.Red;
-            //this.przycisk.Text = textBox1.Text;
-        }
 
         private void CreateMosaic_Click(object sender, EventArgs e)
         {
             CreateMosaicClick?.Invoke(sender, e);
         }
+
+        private void SelectButton_Click(object sender, EventArgs e)
+        {
+            SelectButtonClick?.Invoke(sender, e);
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            TimerTick?.Invoke(sender, e);
+        }
+
+
+
         /* private void TimeProgessBar_Tick_1(object sender, EventArgs e)
 {
-    if (isImageCreated)
-    {
-        progressBar1.Value = mosaicService.Step;
-    }
-    else
-    {
-        progressBar1.Value = 0;
-    }
+if (isImageCreated)
+{
+progressBar1.Value = mosaicService.Step;
+}
+else
+{
+progressBar1.Value = 0;
+}
 }
 */
 

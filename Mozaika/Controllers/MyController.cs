@@ -32,15 +32,15 @@ namespace Controllers
             this.progressBar = progressBar;
             this.view = view;
             m_service = MosaicService.Instance;
-            view.Button1ClickEvent += Button1Handler;
-            view.Button2ClickEvent += Button2Handler;
-            view.TimeProgresBarEvent += TimeProgessBarHandler;
+            view.SelectButtonClick += SelectButtonClickHandler;
+            view.CreateMosaicClick += CreateMosaicClickHandler;
+            view.TimerTick += TimerTickHandler;
             m_service.MosaicFinished += OnMosaicFinished;
             
        
         }
 
-        private void Button1Handler(object sender, EventArgs e)
+        private void SelectButtonClickHandler(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image files (*.jpg) | *.jpg";
@@ -54,7 +54,7 @@ namespace Controllers
             }
         }
 
-        private void Button2Handler(object sender, EventArgs e)
+        private void CreateMosaicClickHandler(object sender, EventArgs e)
         {
             if (isImageLoaded)
             {
@@ -71,7 +71,7 @@ namespace Controllers
 
         }
 
-        private void TimeProgessBarHandler(object sender, EventArgs e)
+        private void TimerTickHandler(object sender, EventArgs e)
         {
             if (isImageCreated)
             {

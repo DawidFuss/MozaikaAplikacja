@@ -8,9 +8,11 @@ namespace Controllers
 {
     public interface IView
     {
-        EventHandler Button1ClickEvent { get; set; }
-        EventHandler Button2ClickEvent { get; set; }
-        EventHandler TimeProgresBarEvent { get; set; }
-        
+        EventHandler CreateMosaicClick { get; set; }
+        EventHandler SelectButtonClick { get; set; }
+        EventHandler TimerTick { get; set; }
+
+        int ProgressBarValue { set; }
+
     }   
 }   
