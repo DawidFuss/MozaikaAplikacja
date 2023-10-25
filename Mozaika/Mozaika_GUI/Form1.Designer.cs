@@ -1,4 +1,7 @@
-﻿namespace Mozaika_GUI
+﻿using System;
+using System.Windows.Forms;
+
+namespace Mozaika_GUI
 {
     partial class Form1
     {
@@ -144,14 +147,15 @@
             this.CreateMosaic.TabIndex = 12;
             this.CreateMosaic.Text = "Stwórz";
             this.CreateMosaic.UseVisualStyleBackColor = true;
-            this.CreateMosaic.Click += new System.EventHandler(this.button1_Click_2);
+           //this.CreateMosaic.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(173, 404);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(403, 28);
+            this.progressBar1.Size = new System.Drawing.Size(438, 28);
             this.progressBar1.TabIndex = 11;
+           //this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // Resolution
             // 
@@ -244,7 +248,6 @@
             this.Wybierz.TabIndex = 1;
             this.Wybierz.Text = "Wybierz";
             this.Wybierz.UseVisualStyleBackColor = true;
-            this.Wybierz.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label1
             // 
@@ -282,7 +285,7 @@
             // TimeProgessBar
             // 
             this.TimeProgessBar.Interval = 50;
-            this.TimeProgessBar.Tick += new System.EventHandler(this.TimeProgessBar_Tick_1);
+            //this.TimeProgessBar.Tick += new System.EventHandler(this.TimeProgessBar_Tick_1);
             // 
             // Form1
             // 
@@ -293,6 +296,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = " ";
+          //  this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.Mozaika.ResumeLayout(false);
             this.Mozaika.PerformLayout();

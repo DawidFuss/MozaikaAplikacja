@@ -8,32 +8,104 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Drawing.Text;
 using System.Threading.Tasks;
-
+using System.Runtime.Remoting.Channels;
+using Controllers;
 namespace Mozaika_GUI
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IView
     {
-        private ListaMiniaturek miniaturki;
-        private Obraz obraz;
+        public event EventHandler CreateMosaicClick;
 
+
+        public event EventHandler ButtonClickEvent;
+        public event EventHandler ButtonClickEvent2;
+        public event EventHandler ProgressBarEvent;
+
+
+        private ListaMiniaturek miniaturki;
+        private MosaicService mosaicService;
+       
         public Form1()
         {
-            
+           
             InitializeComponent();
+            MyController myController = new MyController(this, CreateMosaic, progressBar1);
+            myController.ProgressBarValueChanged += MyController_ProgressBarValueChanged;
+            mosaicService =  MosaicService.Instance;
             Lista.View = View.Details;
             Lista.Columns.Add("Nazwa zbioru", 100);
             Lista.Columns.Add("Ilość Elementów", 100);
             Lista.Columns.Add("Opis", 100);
             Lista.Columns.Add("Ścieżka", 150);
-
             string[] elementy_Rozmiar_Mozaiki = { "A0: 841mm x 1189mm", "A1: 594mm x 841mm", "A2: 420mm x 594mm",
-                "A3: 297mm x 420mm","A4: 210mm x 297mm"};
+            "A3: 297mm x 420mm","A4: 210mm x 297mm"};
             MosaicSize.Items.AddRange(elementy_Rozmiar_Mozaiki);
-
-            miniaturki = new ListaMiniaturek();
-            obraz = new Obraz(@"C:\Users\dawid\OneDrive\Desktop\Mozaiki\images(8).jpg", miniaturki);
+           // mosaicService.MosaicFinished += OnMosaicFinished;
             TimeProgessBar.Start();
+            Wybierz.Click += (sender, e) => 
+            { 
+                ButtonClickEvent?.Invoke(sender, e); 
+            };
+
+            CreateMosaic.Click += (sender, e) =>
+            {
+                Button2ClickEvent?.Invoke(sender, e);
+            };
+
+            progressBar1.Click += (sender, e) => 
+            { 
+  
+                TimeProgresBarEvent?.Invoke(sender, e);      
+            };
+
+
         }
+
+        public EventHandler Button1ClickEvent
+        {
+            get
+            {
+                return ButtonClickEvent;
+            }
+            set
+            {
+                ButtonClickEvent = value;
+            }
+        }
+
+        public EventHandler Button2ClickEvent 
+        {
+            get
+            {
+                return ButtonClickEvent2;
+            }
+            set
+            {
+                ButtonClickEvent2 = value;
+            }
+
+        }
+
+        public EventHandler TimeProgresBarEvent
+        {
+            get
+            { 
+              return ProgressBarEvent; 
+            }
+
+            set
+            {
+              ProgressBarEvent = value;
+            }
+
+        }
+
+        private void MyController_ProgressBarValueChanged(object sender, int value)
+        {
+            progressBar1.Value = value;
+        }
+
+
 
         private void przycisk_Click(object sender, EventArgs e)
         {
@@ -41,45 +113,43 @@ namespace Mozaika_GUI
             //this.przycisk.Text = textBox1.Text;
         }
 
-
-
-
-        private void button1_Click_1(object sender, EventArgs e)
+        private void CreateMosaic_Click(object sender, EventArgs e)
         {
-
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files (*.jpg) | *.jpg | All.files (*.*)|*.*";
-            openFileDialog.Title = "Wybierz plik";
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                textBoxImageName.Text = openFileDialog.FileName;
-            }
-
+            CreateMosaicClick?.Invoke(sender, e);
         }
-
-
-
-        private async void button1_Click_2(object sender, EventArgs e)
-        {
-            CreateMosaic.Enabled = false;
-            
-            miniaturki.Wczytaj(@"C:\Users\dawid\OneDrive\Desktop\zdjecia");
-            
-            this.progressBar1.Maximum = obraz.Steps;
-            this.progressBar1.Step = obraz.Steps/2;
-            //Thread thread = new Thread(obraz.ZrobMozaike);
-            
-            //thread.Start();
-
-            //CreateMosaic.Enabled = true;
-        }
-
-      
-      
-
-        private void TimeProgessBar_Tick_1(object sender, EventArgs e)
-        {
-            this.progressBar1.Step = obraz.Step;
-        }
+        /* private void TimeProgessBar_Tick_1(object sender, EventArgs e)
+{
+    if (isImageCreated)
+    {
+        progressBar1.Value = mosaicService.Step;
+    }
+    else
+    {
+        progressBar1.Value = 0;
     }
 }
+*/
+
+        /* private void OnMosaicFinished(object sender, EventArgs e)
+         {
+
+
+             Invoke(new Action(() =>
+             {
+                 progressBar1.Value = 0;
+                 CreateMosaic.Enabled = true;
+                 isImageCreated = false;
+                 MessageBox.Show("Mozaika została stworzona");
+
+
+             }));
+
+
+         }
+        */
+
+    }
+}
+
+
+

@@ -11,7 +11,7 @@ namespace Mozaika_GUI
 {
     public class Obraz
     {
-        private Bitmap obraz;
+        private Bitmap obraz {  get; set; }
         ListaMiniaturek miniaturki;
         private int szerokosc;
         private int wysokosc;
@@ -19,6 +19,8 @@ namespace Mozaika_GUI
         private int iloscWPionie;
         private int maxNumberOfSteps;
         private int step = 0;
+        public delegate void MosaicFinishedEventHandler(object sender, EventArgs e);
+        public event MosaicFinishedEventHandler MosaicFinished;
 
         private SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
 
@@ -45,6 +47,7 @@ namespace Mozaika_GUI
         public void ZrobMozaike()
         {
             FragmentObrazu[,] fragmenty = new FragmentObrazu[iloscWPoziomie, iloscWPionie];
+            step = 0;
             for(int y=0; y<iloscWPionie; y++)
             {
                 for(int x=0; x<iloscWPoziomie; x++)
@@ -56,12 +59,16 @@ namespace Mozaika_GUI
                     semaphoreSlim.Wait();
                     step++;
                     semaphoreSlim.Release();
+                    
                 }
             }
-            obraz.Save("wynik.bmp");//bin debug
-            //dioptrie dpi - co to - jakie sa mozliwosci druku
-        }
 
+            //obraz.Save("wynik.bmp");//bin debug
+            
+        
+            OnMosaicFinished(EventArgs.Empty);
+        }
+        
         public int Steps
         {
             get
@@ -81,5 +88,9 @@ namespace Mozaika_GUI
             }
         }
 
+        public virtual void OnMosaicFinished(EventArgs e)
+        {
+            MosaicFinished?.Invoke(this, e);
+        }
     }
 }

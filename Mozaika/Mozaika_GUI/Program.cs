@@ -6,8 +6,7 @@ using Mozaika_Logic;
 using Mozaika_GUI;
 using System.Configuration;
 using System.Windows.Forms;
-
-
+using Controllers;
 
 namespace Mozaika_GUI
 {
@@ -19,10 +18,12 @@ namespace Mozaika_GUI
         [STAThread]
         public static void Main()
         {
-            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Form1 form  = new Form1();
+            MyController myController = new MyController();
+            Application.Run(form);
+            
         }
     }
 }
