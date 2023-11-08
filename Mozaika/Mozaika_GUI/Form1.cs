@@ -20,13 +20,13 @@ namespace Mozaika_GUI
 
         private ListaMiniaturek miniaturki;
         private MosaicService mosaicService;
-       
+
         public Form1()
         {
-           
+
             InitializeComponent();
             MyController myController = new MyController(this, CreateMosaic, progressBar1);
-            mosaicService =  MosaicService.Instance;
+            mosaicService = MosaicService.Instance;
             Lista.View = View.Details;
             Lista.Columns.Add("Nazwa zbioru", 100);
             Lista.Columns.Add("Ilość Elementów", 100);
@@ -35,9 +35,8 @@ namespace Mozaika_GUI
             string[] elementy_Rozmiar_Mozaiki = { "A0: 841mm x 1189mm", "A1: 594mm x 841mm", "A2: 420mm x 594mm",
             "A3: 297mm x 420mm","A4: 210mm x 297mm"};
             MosaicSize.Items.AddRange(elementy_Rozmiar_Mozaiki);
-           // mosaicService.MosaicFinished += OnMosaicFinished;
             Timer.Start();
-          
+
 
         }
 
@@ -78,15 +77,23 @@ namespace Mozaika_GUI
             }
 
         }
-
-        public int ProgressBarValue
+        int IView.ProgressBarValue
         {
-           
+            get
+            {
+                return progressBar1.Value;
+            }
             set
             {
-                progressBar1.Value = value;
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new Action(() => progressBar1.Value = value));
+                }
+                else
+                {
+                    progressBar1.Value = value;
+                }
             }
-
         }
 
 
@@ -104,40 +111,6 @@ namespace Mozaika_GUI
         {
             TimerTick?.Invoke(sender, e);
         }
-
-
-
-        /* private void TimeProgessBar_Tick_1(object sender, EventArgs e)
-{
-if (isImageCreated)
-{
-progressBar1.Value = mosaicService.Step;
-}
-else
-{
-progressBar1.Value = 0;
-}
-}
-*/
-
-        /* private void OnMosaicFinished(object sender, EventArgs e)
-         {
-
-
-             Invoke(new Action(() =>
-             {
-                 progressBar1.Value = 0;
-                 CreateMosaic.Enabled = true;
-                 isImageCreated = false;
-                 MessageBox.Show("Mozaika została stworzona");
-
-
-             }));
-
-
-         }
-        */
-
     }
 }
 

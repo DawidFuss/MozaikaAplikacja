@@ -284,7 +284,7 @@ namespace Mozaika_GUI
             // 
             // Timer
             // 
-            this.TimeProgessBar.Interval = 50;
+           // this.TimeProgessBar.Interval = 50;
             //this.TimeProgessBar.Tick += new System.EventHandler(this.TimeProgessBar_Tick_1);
             // 
             // Form1

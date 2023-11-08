@@ -12,7 +12,7 @@ namespace Controllers
         EventHandler SelectButtonClick { get; set; }
         EventHandler TimerTick { get; set; }
 
-        int ProgressBarValue { set; }
+        int ProgressBarValue { get; set; }
 
     }   
 }   

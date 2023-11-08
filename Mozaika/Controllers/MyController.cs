@@ -6,6 +6,8 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Controllers   
@@ -22,6 +24,7 @@ namespace Controllers
         private System.Windows.Forms.Button createMosaic;
         private System.Windows.Forms.ProgressBar progressBar;
         public event EventHandler<int> ProgressBarValueChanged;
+     
 
 
         public MyController() { }
@@ -32,12 +35,12 @@ namespace Controllers
             this.progressBar = progressBar;
             this.view = view;
             m_service = MosaicService.Instance;
+            m_service.ProgressUpdated += ProgressUpdatedHandler;
             view.SelectButtonClick += SelectButtonClickHandler;
             view.CreateMosaicClick += CreateMosaicClickHandler;
-            view.TimerTick += TimerTickHandler;
+         //   view.TimerTick += TimerTickHandler;
             m_service.MosaicFinished += OnMosaicFinished;
-            
-       
+      
         }
 
         private void SelectButtonClickHandler(object sender, EventArgs e)
@@ -70,33 +73,55 @@ namespace Controllers
 
 
         }
-
+        /*
         private void TimerTickHandler(object sender, EventArgs e)
         {
             if (isImageCreated)
             {
-                progressBar.Value = m_service.Step;
-                ProgressBarValueChanged?.Invoke(this, progressBar.Value);
+                view.ProgressBarValue = m_service.Step;
+             //   ProgressBarValueChanged?.Invoke(this, view.ProgressBarValue);
             }
             else
             {
-                progressBar.Value = 0;
-                ProgressBarValueChanged?.Invoke(this, progressBar.Value);
+                view.ProgressBarValue = 0;
+             //   ProgressBarValueChanged?.Invoke(this, view.ProgressBarValue);
             }
-        }
+        }*/
+
 
         private void OnMosaicFinished(object sender, EventArgs e)
         {
             
-               createMosaic.Invoke(new Action(() =>
-               {
-                    progressBar.Value = 0;
+              // createMosaic.Invoke(new Action(() =>
+              // {
+                   isImageCreated = false;
+            //  progressBar.Value = 0;
+                    progressBar.Visible = false;
                     createMosaic.Enabled = true;
-                    isImageCreated = false;
+                  
                     MessageBox.Show("Mozaika została stworzona");
-               }));
+                   SaveFileDialog saveFileDialog = new SaveFileDialog();
+                   saveFileDialog.Filter = "Image files(*.jpg) | *.jpg";
+                   saveFileDialog.Title = "Podaj nazwę oraz miejsce zapisu";
+                   if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                   {
+                       string filePath = saveFileDialog.FileName;
+                       m_service.SaveImage(filePath);
+                       
+                   }
+
+              // }));
             
         }
+
+        private void ProgressUpdatedHandler(object sender, int value)
+        {
+            if (view.ProgressBarValue != value)
+            {
+                view.ProgressBarValue = value;
+            }
+        }
+
 
 
     }

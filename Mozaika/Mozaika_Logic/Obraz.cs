@@ -12,6 +12,7 @@ namespace Mozaika_GUI
     public class Obraz
     {
         private Bitmap obraz {  get; set; }
+        private Bitmap saveImage { get; set; }
         ListaMiniaturek miniaturki;
         private int szerokosc;
         private int wysokosc;
@@ -21,6 +22,9 @@ namespace Mozaika_GUI
         private int step = 0;
         public delegate void MosaicFinishedEventHandler(object sender, EventArgs e);
         public event MosaicFinishedEventHandler MosaicFinished;
+        public event EventHandler<int> ProgressUpdated;
+        
+
 
         private SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
 
@@ -42,7 +46,6 @@ namespace Mozaika_GUI
             
             maxNumberOfSteps = iloscWPionie * iloscWPoziomie;
         }
-
         
         public void ZrobMozaike()
         {
@@ -58,12 +61,13 @@ namespace Mozaika_GUI
                     fragmenty[x, y].Fragment = miniaturka.Obraz;
                     semaphoreSlim.Wait();
                     step++;
+                    ProgressUpdated?.Invoke(this, step);
                     semaphoreSlim.Release();
                     
                 }
             }
-
-            //obraz.Save("wynik.bmp");//bin debug
+            
+           // obraz.Save("wynik.bmp");//bin debug
             
         
             OnMosaicFinished(EventArgs.Empty);
