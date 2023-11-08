@@ -2,6 +2,7 @@
 using Mozaika_Logic;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace Controllers
         private void SelectButtonClickHandler(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files (*.jpg) | *.jpg";
+            openFileDialog.Filter = "Image files (*.jpg) | *.jpg | (*.bmp) | *.bmp";
             openFileDialog.Title = "Wybierz plik";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -89,14 +90,14 @@ namespace Controllers
         }*/
 
 
-        private void OnMosaicFinished(object sender, EventArgs e)
+        private void OnMosaicFinished(object sender, Bitmap obraz)
         {
             
-              // createMosaic.Invoke(new Action(() =>
-              // {
+               createMosaic.Invoke(new Action(() =>
+               {
                    isImageCreated = false;
-            //  progressBar.Value = 0;
-                    progressBar.Visible = false;
+                      progressBar.Value = 0;
+                    //progressBar.Visible = false;
                     createMosaic.Enabled = true;
                   
                     MessageBox.Show("Mozaika została stworzona");
@@ -106,11 +107,10 @@ namespace Controllers
                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
                    {
                        string filePath = saveFileDialog.FileName;
-                       m_service.SaveImage(filePath);
-                       
+                       obraz.Save(filePath);
                    }
 
-              // }));
+               }));
             
         }
 

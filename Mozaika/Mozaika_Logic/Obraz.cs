@@ -20,7 +20,7 @@ namespace Mozaika_GUI
         private int iloscWPionie;
         private int maxNumberOfSteps;
         private int step = 0;
-        public delegate void MosaicFinishedEventHandler(object sender, EventArgs e);
+        public delegate void MosaicFinishedEventHandler(object sender, Bitmap obraz);
         public event MosaicFinishedEventHandler MosaicFinished;
         public event EventHandler<int> ProgressUpdated;
         
@@ -70,7 +70,7 @@ namespace Mozaika_GUI
            // obraz.Save("wynik.bmp");//bin debug
             
         
-            OnMosaicFinished(EventArgs.Empty);
+            OnMosaicFinished(obraz);
         }
         
         public int Steps
@@ -92,9 +92,11 @@ namespace Mozaika_GUI
             }
         }
 
-        public virtual void OnMosaicFinished(EventArgs e)
+        public virtual void OnMosaicFinished(Bitmap obraz)
         {
-            MosaicFinished?.Invoke(this, e);
+            MosaicFinished?.Invoke(this, obraz);
         }
+
+        
     }
 }

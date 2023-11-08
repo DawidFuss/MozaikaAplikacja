@@ -26,7 +26,7 @@ namespace Mozaika_GUI
                     return;
                 }
 
-                string[] rozszezenia = new string[] { "*.jpg", "*.png", "*.bmp" };
+                string[] rozszezenia = new string[] { "*.jpg", "*.png", "*.bmp", "*" };
 
                 foreach (string rozszezenie in rozszezenia)
                 {
