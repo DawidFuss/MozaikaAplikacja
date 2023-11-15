@@ -46,10 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MozakaProperties\Format.cs" />
     <Compile Include="FragmentObrazu.cs" />
     <Compile Include="ListaMiniaturek.cs" />
     <Compile Include="Miniaturka.cs" />
     <Compile Include="MosaicService.cs" />
+    <Compile Include="MozakaProperties\Properties.cs" />
     <Compile Include="Obraz.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
