@@ -1,5 +1,6 @@
 ﻿using Mozaika_GUI;
 using Mozaika_Logic;
+using Mozaika_Logic.MozakaProperties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -41,7 +42,18 @@ namespace Controllers
             view.CreateMosaicClick += CreateMosaicClickHandler;
          //   view.TimerTick += TimerTickHandler;
             m_service.MosaicFinished += OnMosaicFinished;
-      
+
+
+            view.DpiNames = Properties.GetInstance().DpiNames;
+            //w widoku udostepnic zdarzernie zmiany zaznaczonego indeksu
+            //w kontrolerze reagujemy na to i ustawiamy zaznaczony index w properties
+            //zaznaczony index mozna wyciagnac na 2 sposoby
+            //mamy object sender w metode reagujacej na zmiane indexu i robimy ComboBox cb = (ComboBox)sender;
+            //cb.seletedIndex
+            //2 sposob 
+            //wyciagamy index w postaci wlasciwosci z menu cos jak z DpiName ale get
+
+
         }
 
         private void SelectButtonClickHandler(object sender, EventArgs e)

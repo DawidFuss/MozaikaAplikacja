@@ -14,5 +14,8 @@ namespace Controllers
 
         int ProgressBarValue { get; set; }
 
+        string[] DpiNames { set; }
+
+
     }   
 }   

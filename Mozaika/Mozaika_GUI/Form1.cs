@@ -111,6 +111,14 @@ namespace Mozaika_GUI
         {
             TimerTick?.Invoke(sender, e);
         }
+
+        public string[] DpiNames {
+            set
+            {
+                Resolution.Items.Clear();
+                Resolution.Items.AddRange(value);
+            } 
+        }
     }
 }
 
